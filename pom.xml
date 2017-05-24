@@ -10,7 +10,7 @@
         <module>openplatform-common</module>
         <module>openplatform-model</module>
         <module>openplatform-persistent</module>
-        <module>openplatform-oauth2</module>
+        <module>openplatform-sdk</module>
         <module>openplatform-service</module>
         <module>openplatform-web</module>
         <module>openplatform-war</module>
@@ -66,12 +66,26 @@
         <maven-enforcer-plugin.version>1.4.1</maven-enforcer-plugin.version>
         <maven-surefire-report-plugin.version>2.19</maven-surefire-report-plugin.version>
         <springsecurity.version>4.0.1.RELEASE</springsecurity.version>
-
+        <org.shiro-version>1.2.2</org.shiro-version>
     </properties>
 
     <dependencies>
 
-
+        <dependency>
+            <groupId>org.apache.shiro</groupId>
+            <artifactId>shiro-core</artifactId>
+            <version>${org.shiro-version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.shiro</groupId>
+            <artifactId>shiro-spring</artifactId>
+            <version>${org.shiro-version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.shiro</groupId>
+            <artifactId>shiro-web</artifactId>
+            <version>${org.shiro-version}</version>
+        </dependency>
 
         <!-- spring.io -->
         <dependency>
