@@ -3,7 +3,7 @@
     <parent>
         <artifactId>openplatform</artifactId>
         <groupId>cn.com.reformer.openplatform</groupId>
-        <version>1.0-SNAPSHOT</version>
+        <version>${project.version}</version>
     </parent>
 
     <modelVersion>4.0.0</modelVersion>
@@ -13,7 +13,8 @@
     <version>1.0-SNAPSHOT</version>
     <name>openplatform-common</name>
     <url>http://maven.apache.org</url>
-
+    <dependencyManagement>
     <dependencies>
     </dependencies>
+    </dependencyManagement>
 </project>

@@ -61,18 +61,20 @@ public class PlatformUserResourceController {
 					               .setBody(oauthResponse.getBody());
 		}
 
+
 	}
 
 	private List<PlatformUserResource> convert(List<PlatformUser> platformUsers) {
-		List<PlatformUserResource> platformUserResources = new ArrayList<>();
-		platformUsers.forEach(platformUser -> {
+		List<PlatformUserResource> platformUserResources = new ArrayList<PlatformUserResource>();
+		for(PlatformUserResource platformUser:platformUserResources){
 			PlatformUserResource resource = new PlatformUserResource();
 			resource.setId(platformUser.getId());
 			resource.setEmail(platformUser.getEmail());
 			resource.setMobilePhone(platformUser.getMobilePhone());
 			resource.setUsername(platformUser.getUsername());
 			platformUserResources.add(resource);
-		});
+		}
+
 		return platformUserResources;
 	}
 }
