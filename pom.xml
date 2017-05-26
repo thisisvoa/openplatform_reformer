@@ -30,12 +30,11 @@
         <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
         <!--  编译jdk版本  -->
         <jdk.version>1.8</jdk.version>
-        <buildjdk.version>1.8</buildjdk.version>
+       
         <netty.version>4.0.34.Final</netty.version>
         <!--  依赖版本  -->
         <pagehelper.version>4.1.1</pagehelper.version>
         <mysql.connector.version>5.1.34</mysql.connector.version>
-        <mysql.version>5.6.28-win32</mysql.version>
         <tomcat.version>7.0.54</tomcat.version>
         <jetty.version>9.2.1.v20140609</jetty.version>
         <spring.version>4.2.5.RELEASE</spring.version>
@@ -398,7 +397,7 @@
         <dependency>
             <groupId>com.alibaba</groupId>
             <artifactId>fastjson</artifactId>
-            <version>1.2.12</version>
+            <version>${fastjson.version}</version>
         </dependency>
         <dependency>
             <groupId>commons-dbcp</groupId>
@@ -409,12 +408,12 @@
         <dependency>
             <groupId>org.quartz-scheduler</groupId>
             <artifactId>quartz</artifactId>
-            <version>2.2.1</version>
+            <version>${quartz}</version>
         </dependency>
         <dependency>
             <groupId>org.quartz-scheduler</groupId>
             <artifactId>quartz-jobs</artifactId>
-            <version>2.2.1</version>
+            <version>${quartz}</version>
         </dependency>
 
 
@@ -639,6 +638,11 @@
             <groupId>commons-beanutils</groupId>
             <artifactId>commons-beanutils</artifactId>
             <version>1.8.3</version>
+        </dependency>
+        <dependency>
+            <groupId>c3p0</groupId>
+            <artifactId>c3p0</artifactId>
+            <version>0.9.1.2</version>
         </dependency>
     </dependencies>
     </dependencyManagement>
