@@ -1,0 +1,11 @@
+com\weasel\openplatform\security\helper\RandomHelper.class
+com\weasel\openplatform\security\domain\SecurityService.class
+com\weasel\openplatform\security\helper\ShiroSecurityHelper.class
+com\weasel\openplatform\security\SecurityServer.class
+com\weasel\openplatform\security\helper\EncryptHelper.class
+com\weasel\openplatform\security\domain\BaseUser.class
+com\weasel\openplatform\security\shiro\EncryptCredentialsMatcher.class
+com\weasel\openplatform\security\exception\LockAccountException.class
+com\weasel\openplatform\security\shiro\ShiroRealm.class
+com\weasel\openplatform\security\exception\UnAllowLoginException.class
+com\weasel\openplatform\security\exception\UnknowAccountException.class

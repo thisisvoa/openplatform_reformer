@@ -20,8 +20,8 @@
       
     </modules>
 
-    <name>openplatform</name>
-    <url>http://maven.apache.org</url>
+    
+     
 
     <properties>
         <!--指定Maven用什么编码来读取源码及文档 -->

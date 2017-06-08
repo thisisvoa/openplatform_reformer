@@ -61,7 +61,7 @@ public class OAuthController {
 			responseType = oauthRequest.getResponseType();  //获得客户端的返回类型
 			oauthValidateService.validateAppkey(appkey);  //验证appkey是否有效
 			oauthValidateService.validateRedirectUrl(appkey, redirectUri);  //验证回调函数是否有效
-			oauthValidateService.validateAuthenticated();   //验证用户是否已登录授权，如果还没授权，抛出异常，跳转到登录页面
+			//oauthValidateService.validateAuthenticated();   //验证用户是否已登录授权，如果还没授权，抛出异常，跳转到登录页面
 			
 			OAuthASResponse.OAuthAuthorizationResponseBuilder builder = OAuthASResponse.authorizationResponse(request,HttpServletResponse.SC_FOUND);
 			OAuthIssuerImpl oauthIssuerImpl = new OAuthIssuerImpl(new MD5Generator());

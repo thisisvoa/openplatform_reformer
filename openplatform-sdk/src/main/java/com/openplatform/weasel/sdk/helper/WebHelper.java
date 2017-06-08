@@ -94,60 +94,39 @@ public final class WebHelper {
 		return httpMethod;
 	}
 	
-	/**
-	 * 
-	 * @param method
-	 * @param url
-	 * @param clazz
-	 * @return
-	 */
-	public static <T> T execute(Method method,String url,Class<T> clazz){
-		return execute(method, url,new HashMap<String,String>(), new HashMap<String,String>(), new HashMap<String,String>(),clazz);
-	}
+
 	/**
 	 * 
 	 * @param method and enum
 	 * @param url
 	 * @param headers
 	 * @param params
-	 * @param clazz
 	 * @return
 	 */
-	public static <T> T execute(Method method,String url,Map<String,String> headers,Map<String,String> params,Map<String,String> queryString,Class<T> clazz){
+	public static String execute1(Method method,String url,Map<String,String> headers,Map<String,String> params,Map<String,String> queryString){
 		
 		HttpMethod response = execute(method, url, headers, params,queryString);
 		String json = "";
 		try {
-			json = response.getResponseBodyAsString();
+ 			json = response.getResponseBodyAsString();
 		} catch (IOException e) {
 			throw new IOCommunicateException(e.getMessage());
 		}finally{ releaseConnection(response); }
-		return JsonHelper.fromJsonString(json, clazz);
+		return json;
 		
 	}
 	
-	/**
-	 * @param url
-	 * @param params
-	 * @param clazz
-	 * @return
-	 */
-	public static <T> T doPost(String url,Map<String,String> params,Class<T> clazz){
-		Map<String,String> headers = new HashMap<>();
-		headers.put("Content-Type", "application/x-www-form-urlencoded");
-		return execute(Method.POST, url, headers, params, params, clazz);
-	}
+
 	
 	/**
 	 * @param url
-	 * @param queryString
-	 * @param clazz
+	 * @param param
 	 * @return
 	 */
-	public static <T> T doGet(String url,Map<String,String> queryString,Class<T> clazz){
+	public static String doGet(String url,Map<String,String> param){
 		Map<String,String> headers = new HashMap<>();
 		headers.put("Content-Type", "application/x-www-form-urlencoded");
-		return execute(Method.GET, url, headers, new HashMap<>(), queryString, clazz);
+		return execute1(Method.GET, url, headers,  param,new HashMap<String,String>());
 	}
 	
 	/**

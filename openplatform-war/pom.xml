@@ -20,11 +20,6 @@
             <version>1.0-SNAPSHOT</version>
         </dependency>
 
-        <dependency>
-            <groupId>cn.com.reformer.openplatform</groupId>
-            <artifactId>openplatform-persistent</artifactId>
-            <version>1.0-SNAPSHOT</version>
-        </dependency>
 
         <dependency>
             <groupId>org.apache</groupId>
