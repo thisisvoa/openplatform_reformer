@@ -15,9 +15,9 @@
         <module>openplatform-service</module>
         <module>openplatform-web</module>
         <module>openplatform-war</module>
-        
-      
-      
+        <module>openplatform-client</module>
+
+
     </modules>
 
     
