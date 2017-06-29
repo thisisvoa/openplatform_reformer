@@ -1,5 +1,6 @@
 import com.openplatform.weasel.sdk.DefaultPlatformClient;
 import com.openplatform.weasel.sdk.OpenPlatformOauthConfig;
+import com.openplatform.weasel.sdk.helper.HttpClientUtil;
 import com.openplatform.weasel.sdk.request.PlatformAccesssTokenRequest;
 import com.openplatform.weasel.sdk.response.PlatformAccessTokenResponse;
 import org.apache.oltu.oauth2.common.exception.OAuthProblemException;
@@ -30,7 +31,13 @@ public class Test {
             stringMaps.put("redirectUrl",request.getRedirectUrl());
             //http://localhost:8080/openplatform-server/oauth/authorize?client_id=065021683200&response_type=code&redirect_uri=weibo/aa.do
             String url = OpenPlatformOauthConfig.authorizeUrl + "?client_id=" + request.getAppkey() + "&response_type=code&redirect_uri=" + request.getRedirectUrl();
-            String code_url =HttpClientUtil2.httpGetRequest(url);
+            HttpRequestProxy httpRequestProxy=new HttpRequestProxy();
+            String code_url = null;
+            try {
+                code_url = HttpClientUtil.doGet(url,"UTF-8");
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
 
             String code=code_url.substring(code_url.indexOf("="));
             request.setCode(code);

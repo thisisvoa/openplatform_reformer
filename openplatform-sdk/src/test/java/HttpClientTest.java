@@ -18,7 +18,7 @@ public class HttpClientTest {
 
     private static void getRequestTest() {
 
-        String url = "http://localhost:8080/openplatform-server/oauth/authorize?client_id=865005230406&response_type=code&redirect_uri=test/test.do";
+        String url = "http://localhost:8089/openplatform-server/oauth/authorize?client_id=865005230406&response_type=code&redirect_uri=test/test.do";
         try {
             String str = HttpClientUtil.doGet(url, "UTF-8");
             if (str != null) {
