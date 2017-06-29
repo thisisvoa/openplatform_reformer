@@ -1,0 +1,82 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+    <parent>
+        <artifactId>openplatform</artifactId>
+        <groupId>cn.com.reformer.openplatform</groupId>
+        <version>1.0-SNAPSHOT</version>
+    </parent>
+
+    <modelVersion>4.0.0</modelVersion>
+    <groupId>cn.com.reformer.openplatform-web</groupId>
+    <artifactId>openplatform-war</artifactId>
+    <version>1.0-SNAPSHOT</version>
+    <packaging>war</packaging>
+    <name>openplatform-war</name>
+    <url>http://maven.apache.org</url>
+    <dependencies>
+        <dependency>
+            <groupId>cn.com.reformer.openplatform</groupId>
+            <artifactId>openplatform-web</artifactId>
+            <version>1.0-SNAPSHOT</version>
+        </dependency>
+
+
+        <dependency>
+            <groupId>org.apache</groupId>
+            <artifactId>tomcat</artifactId>
+            <version>7.0.54</version>
+            <type>zip</type>
+        </dependency>
+    </dependencies>
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-dependency-plugin</artifactId>
+                <version>2.6</version>
+                <executions>
+                    <execution>
+                        <id>unpack-tomcat</id>
+                        <phase>process-sources</phase><!--处理项目主资源文件，复制资源文件到outputclasspath -->
+                        <goals>
+                            <goal>unpack</goal>
+                        </goals>
+                        <configuration>
+                            <artifactItems>
+                                <artifactItem>
+                                    <groupId>org.apache</groupId>
+                                    <artifactId>tomcat</artifactId>
+                                    <version>${tomcat.version}</version>
+                                    <type>zip</type>
+                                    <overWrite>false</overWrite>
+                                    <outputDirectory>${project.build.directory}/</outputDirectory>
+                                </artifactItem>
+                                <!--<artifactItem>
+                                    <groupId>org.zhang.jdk</groupId>
+                                    <artifactId>zhang</artifactId>
+                                    <version>${buildjdk.version}</version>
+                                    <type>zip</type>
+                                    <overWrite>true</overWrite>
+                                    <outputDirectory>${project.build.directory}/</outputDirectory>
+                                </artifactItem>
+                                <artifactItem>
+                                    <groupId>org.mysql</groupId>
+                                    <artifactId>mysql</artifactId>
+                                    <version>${mysql.version}</version>
+                                    <classifier>win32</classifier>
+                                    <overWrite>false</overWrite>
+                                    <type>zip</type>
+                                    <outputDirectory>${project.build.directory}/</outputDirectory>
+                                </artifactItem>-->
+                            </artifactItems>
+                        </configuration>
+                    </execution>
+                </executions>
+            </plugin>
+            
+        </plugins>
+    </build>
+    <!--<build>
+        <finalName>openplatform-war</finalName>
+    </build>-->
+</project>
