@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:aop="http://www.springframework.org/schema/aop"
+	xmlns:tx="http://www.springframework.org/schema/tx" xmlns:util="http://www.springframework.org/schema/util"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-4.0.xsd
+     					 http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-4.0.xsd
+     				     http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-4.0.xsd
+     					 http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-4.0.xsd
+    				     http://www.springframework.org/schema/util http://www.springframework.org/schema/util/spring-util.xsd">
+
+	<import resource="classpath:shiro/shiro-config.xml" />
+	
+	<context:property-placeholder location="classpath:mysql.properties" ignore-unresolvable="true" />
+
+	<context:component-scan base-package="com.openplatform.weasel.client">
+		<context:exclude-filter type="annotation"
+			expression="org.springframework.stereotype.Controller" />
+	</context:component-scan>
+
+	<bean id="dataSource" class="com.mchange.v2.c3p0.ComboPooledDataSource"
+		destroy-method="close">
+		<property name="driverClass" value="${mysql.driver}" />
+		<property name="jdbcUrl" value="${mysql.url}" />
+		<property name="user" value="${mysql.username}" />
+		<property name="password" value="${mysql.password}" />
+		<property name="initialPoolSize" value="2" />
+		<property name="maxPoolSize" value="5" />
+		<property name="minPoolSize" value="3" />
+		<property name="maxIdleTime" value="1800" />
+		<property name="maxStatements" value="0" />
+		<!--每60秒检查所有连接池中的空闲连接。Default: 0 -->
+		<property name="idleConnectionTestPeriod" value="1800" />
+	</bean>
+	
+	<bean id="transactionManager" class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
+	  <property name="dataSource" ref="dataSource" />
+	</bean>
+	
+	<tx:advice id="txAdvice" transaction-manager="transactionManager">
+	    <tx:attributes>
+		    <tx:method name="get*" propagation="REQUIRED" read-only="true"/>
+	       <tx:method name="select*" propagation="REQUIRED" read-only="true"/>
+	       <tx:method name="query*" propagation="REQUIRED" read-only="true"/>
+	       <tx:method name="upate*" propagation="REQUIRED" read-only="false" />
+	       <tx:method name="save*" propagation="REQUIRED" read-only="false" />
+	       <tx:method name="insert*" propagation="REQUIRED" read-only="false" />
+	       <tx:method name="delete*" propagation="REQUIRED" read-only="false" />	
+	        <tx:method name="reset*" propagation="REQUIRED" read-only="false"/>
+	    </tx:attributes>
+	</tx:advice>
+	
+	<aop:config>
+		<aop:pointcut expression="execution(* com.openplatform.weasel.client.application..*.*(..))" id="pointcut"/>
+		<aop:advisor advice-ref="txAdvice" pointcut-ref="pointcut"/>
+	</aop:config>
+
+	<bean id="sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">
+		<property name="dataSource" ref="dataSource" />
+		<property name="configLocation" value="classpath:mybatis/mybatis-config.xml" />
+		<property name="mapperLocations">
+			<list>
+				<value>classpath*:mybatis/mappers/**/*.xml</value>
+			</list>
+		</property>
+	</bean>
+
+</beans>
