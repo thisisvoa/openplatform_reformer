@@ -25,6 +25,19 @@
 	<dependencyManagement>
 		<dependencies>
 			<dependency>
+				<groupId>com.aliyun</groupId>
+				<artifactId>aliyun-java-sdk-iot</artifactId>
+				<version>3.0.0</version>
+			</dependency>
+			<!-- https://mvnrepository.com/artifact/com.aliyun/aliyun-java-sdk-core -->
+			<dependency>
+				<groupId>com.aliyun</groupId>
+				<artifactId>aliyun-java-sdk-core</artifactId>
+				<version>3.2.5</version>
+			</dependency>
+
+
+			<dependency>
 				<groupId>org.apache.shiro</groupId>
 				<artifactId>shiro-core</artifactId>
 				<version>${org.shiro-version}</version>
