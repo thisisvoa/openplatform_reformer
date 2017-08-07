@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ArtifactManager">
+    <artifact type="exploded-war" name="openplatform-client:openplatform-client exploded">
+      <root id="root">
+        <element id="javaee-facet-resources" facet="openplatform-client/web/openplatform-client" />
+        <element id="directory" name="WEB-INF">
+          <element id="directory" name="classes">
+            <element id="module-output" name="openplatform-client" />
+          </element>
+        </element>
+      </root>
+    </artifact>
+    <artifact type="exploded-war" name="openplatform-server:openplatform-server exploded">
+      <root id="root">
+        <element id="javaee-facet-resources" facet="openplatform-server/web/openplatform-server" />
+        <element id="directory" name="WEB-INF">
+          <element id="directory" name="classes">
+            <element id="module-output" name="openplatform-server" />
+          </element>
+        </element>
+      </root>
+    </artifact>
+  </component>
+  <component name="CompilerConfiguration">
+    <wildcardResourcePatterns>
+      <entry name="!?*.java" />
+    </wildcardResourcePatterns>
+  </component>
+  <component name="VcsDirectoryMappings">
+    <mapping directory="$PROJECT_DIR$" vcs="Git" />
+  </component>
+</project>
